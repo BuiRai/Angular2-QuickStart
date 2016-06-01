@@ -1,17 +1,41 @@
 import {
-	Component, Input
+	Component, Input, OnInit
 } from '@angular/core';
 
 import {
 	Hero
-} from './hero'
+} from './hero';
+
+import {
+	HeroService
+} from './hero.service';
+
+import {
+	RouteParams
+} from '@angular/router-deprecated';
 
 @Component({
 	selector: 'my-hero-detail',
-	templateUrl: 'app/hero-detail.html'
+	templateUrl: 'app/hero-detail.view.html',
+	styleUrls: ['app/hero-detail.component.css']
 })
 
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit{
 	@Input()
 	hero: Hero;
+
+	constructor( private routeParams: RouteParams, private heroService: HeroService ) {
+
+	}
+
+	ngOnInit() {
+		let id = +this.routeParams.get('id');
+		this.heroService.getHero(id).
+			then(hero => this.hero = hero);
+	}
+
+	goBack() {
+		window.history.back();
+	}
+
 }

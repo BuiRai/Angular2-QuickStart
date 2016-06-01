@@ -27,6 +27,7 @@ import {
 @Component({
 	selector: 'my-app',
 	templateUrl: 'app/app.view.html',
+	styleUrls: ['app/app.component.css'],
 	directives: [ROUTER_DIRECTIVES],
 	providers: [
 		HeroService,
