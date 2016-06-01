@@ -16,6 +16,14 @@ import {
 	ROUTER_PROVIDERS
 } from '@angular/router-deprecated';
 
+import {
+	DashboardComponent
+} from './dashboard.component';
+
+import {
+	HeroDetailComponent
+} from './hero-detail.component';
+
 @Component({
 	selector: 'my-app',
 	templateUrl: 'app/app.view.html',
@@ -27,6 +35,17 @@ import {
 })
 
 @RouteConfig([
+	{
+		path: '/dashboard',
+		name: 'Dashboard',
+		component: DashboardComponent,
+		useAsDefault: true
+	},
+	{
+		path: '/detail/:id',
+		name: 'HeroDetail',
+		component: HeroDetailComponent
+	},
 	{
 		path: '/heroes',
 		name: 'Heroes',
